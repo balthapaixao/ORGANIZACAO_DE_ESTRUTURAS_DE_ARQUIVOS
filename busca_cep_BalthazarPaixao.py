@@ -15,15 +15,10 @@ endereco = struct.Struct("72s72s72s72s2s8s2s")
 cepColumn = 5
 f = open("cep_ordenado.dat","rb")
 line = f.read(endereco.size)
-counter = 0
 
-while len(line) == endereco.size:
-    line = f.read(endereco.size)
-    counter+= 1
-f.seek(0)
-
+f.seek(0, 2)
 inicio = 0
-fim = counter - 1
+fim = (f.tell()/endereco.size) - 1
 i = 0
 while(inicio <= fim):
     i +=1
